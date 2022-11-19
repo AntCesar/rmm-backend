@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "8cba877a-c896-4285-844a-92c4ea6ff8b0",
+		"name": "RMM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"setUser\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"\r",
+									"    if (response) {\r",
+									"        pm.collectionVariables.set(\"user_id\", response[0].id);\r",
+									"    } else {\r",
+									"        pm.collectionVariables.set(\"user_id\", null);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"54321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cardapios",
+			"item": [
+				{
+					"name": "Index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"setCardapio\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"\r",
+									"    if (response) {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", response[response.length - 1].id);\r",
+									"    } else {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", null);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"setCardapio\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"\r",
+									"    if (response) {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", response[response.length - 1].id);\r",
+									"    } else {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", null);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios/{{cardapio_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios",
+								"{{cardapio_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cardapio1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"root\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios/{{cardapio_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios",
+								"{{cardapio_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios/{{cardapio_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios",
+								"{{cardapio_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Itens",
+			"item": [
+				{
+					"name": "Index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"setCardapio\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"\r",
+									"    if (response) {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", response[response.length - 1].id);\r",
+									"    } else {\r",
+									"        pm.collectionVariables.set(\"cardapio_id\", null);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Item 1\",\r\n    \"description\": \"Tomate\",\r\n    \"price\": 15,\r\n    \"img_url\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/cardapios/{{cardapio_id}}/itens",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cardapios",
+								"{{cardapio_id}}",
+								"itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"root\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios/{{cardapio_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios",
+								"{{cardapio_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/{{user_id}}/cardapios/{{cardapio_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}",
+								"cardapios",
+								"{{cardapio_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login ROOT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('SetToken', function () {\r",
+							"    var response = pm.response.json();\r",
+							"\r",
+							"    if (response.token)\r",
+							"        pm.collectionVariables.set('token', response.token);\r",
+							"    else\r",
+							"        pm.collectionVariables.set('token', null);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"root\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('SetToken', function () {\r",
+							"    var response = pm.response.json();\r",
+							"\r",
+							"    if (response.token)\r",
+							"        pm.collectionVariables.set('token', response.token);\r",
+							"    else\r",
+							"        pm.collectionVariables.set('token', null);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3333",
+			"type": "default"
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "cardapio_id",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
